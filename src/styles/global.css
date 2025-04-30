@@ -1,0 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&family=Special+Gothic+Expanded+One&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-special-gothic: "Special Gothic Expanded One", sans-serif;
+  --font-national-park: "National Park", sans-serif;
+}

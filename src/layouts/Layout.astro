@@ -1,6 +1,5 @@
 ---
-import "@fontsource/fira-mono";
-import Head from "../components/Head.astro";
+import "./src/styles/global.css";
 ---
 
 <!doctype html>
@@ -8,31 +7,29 @@ import Head from "../components/Head.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Maaz Ismail</title>
+    <!-- <meta name="generator" content={Astro.generator} /> -->
+    <title>MAAZ ISMAIL</title>
+    <meta name="description" content="writer and backend engineer." />
 
-    <Head />
+    <!-- Web analytics -->
+    <!-- <script data-goatcounter="https://my-account.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
+
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="MAAZ ISMAIL" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.moazz.co/" />
+    <meta property="og:description" content="writer and backend engineer." />
+    <!-- <meta property="og:image" content="https://www.example.com/_astro/seo-banner.BZD7kegZ.webp"> -->
+    <!-- <meta property="og:image:alt" content=""> -->
   </head>
-  <body>
-    <slot />
+
+  <!-- <h1 class="text-3xl font-bold">Hello world!</h1> -->
+
+  <body class="h-screen bg-[#ebebeb] font-mono overflow-hidden">
+    <main class="h-screen w-full flex items-center justify-center p-4">
+      <slot />
+    </main>
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    font-family: "Fira Mono";
-    /* color: white; */
-    background-color: #eeff99;
-  }
-
-  body {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-</style>
