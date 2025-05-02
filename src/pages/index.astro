@@ -1,27 +1,283 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const content = {
+  name1: "MAAZ",
+  name2: "ISMAIL",
+  subtitle: "age: 24, based: Germany",
+  current: {
+    title: "At The Moment",
+    items: [
+      "postgraduate in Philosophy and Computer Science",
+      "historical fiction project on South Asian past and future",
+    ],
+  },
+  links: {
+    samples: {
+      url: "https://www.dropbox.com/scl/fo/tph0xutoxkfxk4vpj3aou/ADAsyW8HFeN6UHCLSNSUssQ?rlkey=eyjwflfzt4s3qcnqe5bp0vdec&st=052edpyt&dl=0",
+      text: "WRITING SAMPLES",
+      iconClass: "ph-bold ph-file",
+    },
+    resume: {
+      url: "https://www.dropbox.com/scl/fo/q6qfg2hq4xa4q7criqqy6/AAKfK8V5pS6djxm0kVS2oMk?rlkey=ov0h7myaga966e9exawnt2cp7&dl=0",
+      text: "RESUME / CV",
+      iconClass: "ph-bold ph-folder",
+    },
+  },
+  contact: {
+    email: {
+      url: "mailto:ismail@moazz.co",
+      text: "ismail@moazz.co",
+      iconClass: "ph-bold ph-envelope-simple mr-1",
+    },
+    linkedin: {
+      url: "https://www.linkedin.com/in/maazis/",
+      text: "linkedin.com/in/maazis",
+      iconClass: "ph-bold ph-linkedin-logo mr-1",
+    },
+    github: {
+      url: "https://www.github.com/maazis",
+      text: "github.com/maazis",
+      iconClass: "ph-bold ph-github-logo mr-1",
+    },
+  },
+  roles: {
+    writer: {
+      title: "writer",
+      items: [
+        "fiction (literary, genre)",
+        "creative non-fiction",
+        "theatre playwright/director",
+      ],
+    },
+    engineer: {
+      title: "software engineer",
+      items: [
+        "Y Combinator startup in the restaurant industry",
+        "independent clients from Europe and Asia",
+      ],
+    },
+  },
+  interests: {
+    title: "interested in",
+    items: [
+      "documentation of South Asian culture and history",
+      "news media",
+      "music",
+      "the esports industry (incl. Dota 2)",
+      "fashion",
+    ],
+  },
+};
 ---
 
 <Layout>
-  <div class="flex flex-col gap-2 text-[#494368]">
-    <h1 class="font-special-gothic text-5xl mb-2">MAAZ ISMAIL</h1>
+  <main class="text-primary can-bg-change">
+    <!-- small screen -->
+    <div class="md:hidden flex flex-col gap-6 p-4">
+      <div class="flex justify-center gap-4">
+        <a
+          href={content.links.samples.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
+          <span class="font-special-gothic flex items-center gap-1">
+            <i class={content.links.samples.iconClass}></i>
+            {content.links.samples.text}
+          </span>
+        </a>
+        <a
+          href={content.links.resume.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
+          <span class="font-special-gothic flex items-center gap-1">
+            <i class={content.links.resume.iconClass}></i>
+            {content.links.resume.text}
+          </span>
+        </a>
+      </div>
 
-    <span class="text-sm"
-      >Hello. I'm a WRITER and BACKEND ENGINEER based in Germany.</span
-    >
+      <div class="text-center">
+        <h1
+          class="font-special-gothic-expanded text-4xl mb-2 name-hover-trigger"
+        >
+          {content.name1}<br />{content.name2}
+        </h1>
+        <p class="text-xs italic font-national-park">{content.subtitle}</p>
+      </div>
 
-    <div class="text-sm">
-      Please contact me at <a
-        href="mailto:ismail@moazz.co"
-        class="text-[#ff0054] font-national-park">ismail@moazz.co</a
-      >
-      or on <a
-        href="https://www.linkedin.com/in/maazis/"
-        class="text-[#ff0054] font-national-park">LinkedIn</a
-      > :)
+      <div>
+        <p class="font-national-park font-semibold mb-2 text-center text-sm">
+          {content.current.title}
+        </p>
+        <ul class="px-3 list-disc text-xs">
+          {content.current.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div class="flex flex-col items-center gap-1">
+        {
+          Object.entries(content.contact).map(([key, info]) => (
+            <a
+              href={info.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link"
+            >
+              <span class="font-special-gothic flex items-center gap-1">
+                <i class={info.iconClass} />
+                {info.text}
+              </span>
+            </a>
+          ))
+        }
+      </div>
+
+      <div>
+        {
+          Object.entries(content.roles).map(([key, role]) => (
+            <div class={key === "engineer" ? "mt-4" : ""}>
+              <p class="font-national-park font-semibold mb-1">{role.title}</p>
+              <ul class="px-3 list-disc text-xs">
+                {role.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <div>
+        <p class="font-national-park font-semibold mb-2 text-center text-sm">
+          {content.interests.title}
+        </p>
+        <ul class="px-3 list-disc text-xs">
+          {content.interests.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div class="w-full">
+        <iframe
+          style="border-radius:12px"
+          src="https://open.spotify.com/embed/track/3Zs6OEJmiSzn4Cwspokmrx?utm_source=generator&theme=0"
+          width="100%"
+          height="80"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        >
+        </iframe>
+      </div>
     </div>
-  </div>
-</Layout>
+
+    <!-- large screen -->
+    <div
+      class="hidden md:grid h-screen w-full grid-cols-3 grid-rows-3 p-4 relative"
+    >
+      <div class="order-1 flex items-center justify-end">
+        <a
+          href={content.links.samples.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
+          <span class="font-special-gothic flex items-start gap-1">
+            <i class={content.links.samples.iconClass}></i>
+            {content.links.samples.text}
+          </span>
+        </a>
+      </div>
+      <div class="order-2 flex items-center justify-center"></div>
+      <div class="order-3 flex items-center justify-start">
+        <a
+          href={content.links.resume.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
+          <span class="font-special-gothic flex items-start gap-1">
+            <i class={content.links.resume.iconClass}></i>
+            {content.links.resume.text}
+          </span>
+        </a>
+      </div>
+      <div class="order-4 flex items-center justify-end">
+        <div>
+          <p class="font-national-park font-semibold mb-2 text-center">
+            {content.current.title}
+          </p>
+          <ul class="text-left list-disc">
+            {content.current.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+      <div class="order-5 flex flex-col items-center justify-center">
+        <h1
+          class="font-special-gothic-expanded text-5xl mb-2 text-left name-hover-trigger"
+        >
+          {content.name1}<br />{content.name2}
+        </h1>
+        <p class="text-sm italic font-national-park">{content.subtitle}</p>
+      </div>
+      <div class="order-6 flex flex-col items-start justify-center gap-6">
+        {
+          Object.entries(content.roles).map(([key, role]) => (
+            <div>
+              <p class="font-national-park font-semibold mb-1">{role.title}</p>
+              <ul class="text-left list-disc text-sm">
+                {role.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <div class="order-7 flex items-center justify-center"></div>
+      <div class="order-8 flex items-center justify-center flex-col gap-1">
+        {
+          Object.entries(content.contact).map(([key, info]) => (
+            <a
+              href={info.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link"
+            >
+              <span class="font-special-gothic flex items-center gap-1">
+                <i class={info.iconClass} />
+                {info.text}
+              </span>
+            </a>
+          ))
+        }
+      </div>
+      <div class="order-9 flex items-center justify-start text-center">
+        <div>
+          <p class="font-national-park font-semibold mb-2">
+            {content.interests.title}
+          </p>
+          <ul class="text-left list-disc text-sm">
+            {content.interests.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <div class="absolute top-0 left-0 right-0 pt-6 flex justify-center">
+        <iframe
+          style="border-radius:12px"
+          src="https://open.spotify.com/embed/track/40rOlDoGejXXF4B0BYsjx8?utm_source=generator&theme=0"
+          width="40%"
+          height="80"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        >
+        </iframe>
+      </div>
+    </div>
+  </main></Layout
+>
