@@ -1,7 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&family=Special+Gothic+Expanded+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Coral+Pixels&family=National+Park:wght@200..800&family=Special+Gothic&family=Special+Gothic+Expanded+One&display=swap");
 @import "tailwindcss";
+@import "@phosphor-icons/web/bold";
 
 @theme {
-  --font-special-gothic: "Special Gothic Expanded One", sans-serif;
+  --font-special-gothic-expanded: "Special Gothic Expanded One", sans-serif;
   --font-national-park: "National Park", sans-serif;
+  --font-special-gothic: "Special Gothic", sans-serif;
+  --color-background: #ebebeb;
+  --color-primary: #494368;
+  --color-accent: #008dd5;
+  --color-background-alt: #1a1a1a;
+  --color-primary-alt: #ffffff;
+  --color-accent-alt: #ff0054;
+}
+
+@layer components {
+  .link {
+    @apply text-accent font-national-park transition-all duration-200;
+  }
+  .link:hover {
+    @apply text-accent/50;
+  }
+}
+
+.can-bg-change {
+  transition: background-color 0.4s;
+}
+
+.can-bg-change:has(.name-hover-trigger:hover) {
+  background-color: #ff0054 !important;
 }
