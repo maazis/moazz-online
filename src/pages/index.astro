@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+const SPOTIFY_EMBED_URL =
+  import.meta.env.PUBLIC_SPOTIFY_EMBED_URL ||
+  "https://open.spotify.com/embed/track/3Zs6OEJmiSzn4Cwspokmrx?utm_source=generator&theme=0";
+
 const content = {
   name1: "MAAZ",
   name2: "ISMAIL",
@@ -9,7 +13,7 @@ const content = {
     title: "At The Moment",
     items: [
       "postgraduate in Philosophy and Computer Science",
-      "historical fiction project on South Asian past and future",
+      "historical fiction on the past and future of South Asia",
     ],
   },
   links: {
@@ -51,7 +55,7 @@ const content = {
       ],
     },
     engineer: {
-      title: "software engineer",
+      title: "backend engineer",
       items: [
         "Y Combinator startup in the restaurant industry",
         "independent clients from Europe and Asia",
@@ -61,11 +65,11 @@ const content = {
   interests: {
     title: "interested in",
     items: [
-      "documentation of South Asian culture and history",
       "news media",
       "music",
       "the esports industry (incl. Dota 2)",
       "fashion",
+      "art and culture archival",
     ],
   },
 };
@@ -74,15 +78,15 @@ const content = {
 <Layout>
   <main class="text-primary can-bg-change">
     <!-- small screen -->
-    <div class="md:hidden flex flex-col gap-6 p-4">
-      <div class="flex justify-center gap-4">
+    <div class="md:hidden flex flex-col gap-8 p-4">
+      <div class="flex justify-center gap-12 font-special-gothic text-sm">
         <a
           href={content.links.samples.url}
           target="_blank"
           rel="noopener noreferrer"
           class="link"
         >
-          <span class="font-special-gothic flex items-center gap-1">
+          <span class="flex items-center gap-1">
             <i class={content.links.samples.iconClass}></i>
             {content.links.samples.text}
           </span>
@@ -93,7 +97,7 @@ const content = {
           rel="noopener noreferrer"
           class="link"
         >
-          <span class="font-special-gothic flex items-center gap-1">
+          <span class="flex items-center gap-1">
             <i class={content.links.resume.iconClass}></i>
             {content.links.resume.text}
           </span>
@@ -102,15 +106,16 @@ const content = {
 
       <div class="text-center">
         <h1
-          class="font-special-gothic-expanded text-4xl mb-2 name-hover-trigger"
+          class="font-special-gothic-expanded text-4xl mb-1 name-hover-trigger"
         >
-          {content.name1}<br />{content.name2}
+          {content.name1}
+          {content.name2}
         </h1>
         <p class="text-xs italic font-national-park">{content.subtitle}</p>
       </div>
 
       <div>
-        <p class="font-national-park font-semibold mb-2 text-center text-sm">
+        <p class="font-national-park font-semibold mb-1 text-center text-sm">
           {content.current.title}
         </p>
         <ul class="px-3 list-disc text-xs">
@@ -118,7 +123,7 @@ const content = {
         </ul>
       </div>
 
-      <div class="flex flex-col items-center gap-1">
+      <div class="flex flex-col items-center gap-1 font-special-gothic text-sm">
         {
           Object.entries(content.contact).map(([key, info]) => (
             <a
@@ -127,7 +132,7 @@ const content = {
               rel="noopener noreferrer"
               class="link"
             >
-              <span class="font-special-gothic flex items-center gap-1">
+              <span class="flex items-center gap-1">
                 <i class={info.iconClass} />
                 {info.text}
               </span>
@@ -140,7 +145,9 @@ const content = {
         {
           Object.entries(content.roles).map(([key, role]) => (
             <div class={key === "engineer" ? "mt-4" : ""}>
-              <p class="font-national-park font-semibold mb-1">{role.title}</p>
+              <p class="font-national-park font-semibold mb-1 text-sm">
+                {role.title}
+              </p>
               <ul class="px-3 list-disc text-xs">
                 {role.items.map((item) => (
                   <li>{item}</li>
@@ -152,7 +159,7 @@ const content = {
       </div>
 
       <div>
-        <p class="font-national-park font-semibold mb-2 text-center text-sm">
+        <p class="font-national-park font-semibold mb-1 text-sm">
           {content.interests.title}
         </p>
         <ul class="px-3 list-disc text-xs">
@@ -163,7 +170,7 @@ const content = {
       <div class="w-full">
         <iframe
           style="border-radius:12px"
-          src="https://open.spotify.com/embed/track/3Zs6OEJmiSzn4Cwspokmrx?utm_source=generator&theme=0"
+          src={SPOTIFY_EMBED_URL}
           width="100%"
           height="80"
           allowfullscreen=""
@@ -255,12 +262,12 @@ const content = {
           ))
         }
       </div>
-      <div class="order-9 flex items-center justify-start text-center">
+      <div class="order-9 flex items-center justify-start">
         <div>
           <p class="font-national-park font-semibold mb-2">
             {content.interests.title}
           </p>
-          <ul class="text-left list-disc text-sm">
+          <ul class="list-disc text-sm">
             {content.interests.items.map((item) => <li>{item}</li>)}
           </ul>
         </div>
@@ -269,7 +276,7 @@ const content = {
       <div class="absolute top-0 left-0 right-0 pt-6 flex justify-center">
         <iframe
           style="border-radius:12px"
-          src="https://open.spotify.com/embed/track/40rOlDoGejXXF4B0BYsjx8?utm_source=generator&theme=0"
+          src={SPOTIFY_EMBED_URL}
           width="40%"
           height="80"
           allowfullscreen=""
