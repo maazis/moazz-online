@@ -56,5 +56,5 @@
 }
 
 .markdown-content h3 {
-  @apply font-barcode text-center m-4;
+  @apply font-barcode text-right text-2xl m-4;
 }
