@@ -1,85 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const SPOTIFY_EMBED_URL =
-  import.meta.env.PUBLIC_SPOTIFY_EMBED_URL ||
-  "https://open.spotify.com/embed/track/3Zs6OEJmiSzn4Cwspokmrx?utm_source=generator&theme=0";
-
-const content = {
-  name1: "MAAZ",
-  name2: "ISMAIL",
-  subtitle: "age: 24, based: Germany",
-  current: {
-    title: "At The Moment",
-    items: [
-      "postgraduate in Philosophy and Computer Science",
-      "historical fiction on the past and future of South Asia",
-    ],
-  },
-  links: {
-    samples: {
-      url: "https://www.dropbox.com/scl/fo/tph0xutoxkfxk4vpj3aou/ADAsyW8HFeN6UHCLSNSUssQ?rlkey=eyjwflfzt4s3qcnqe5bp0vdec&st=052edpyt&dl=0",
-      text: "WRITING SAMPLES",
-      iconClass: "ph-bold ph-file",
-    },
-    resume: {
-      url: "https://www.dropbox.com/scl/fo/q6qfg2hq4xa4q7criqqy6/AAKfK8V5pS6djxm0kVS2oMk?rlkey=ov0h7myaga966e9exawnt2cp7&dl=0",
-      text: "RESUME / CV",
-      iconClass: "ph-bold ph-folder",
-    },
-  },
-  contact: {
-    email: {
-      url: "mailto:ismail@moazz.co",
-      text: "ismail@moazz.co",
-      iconClass: "ph-bold ph-envelope-simple mr-1",
-    },
-    linkedin: {
-      url: "https://www.linkedin.com/in/maazis/",
-      text: "linkedin.com/in/maazis",
-      iconClass: "ph-bold ph-linkedin-logo mr-1",
-    },
-    github: {
-      url: "https://www.github.com/maazis",
-      text: "github.com/maazis",
-      iconClass: "ph-bold ph-github-logo mr-1",
-    },
-  },
-  roles: {
-    writer: {
-      title: "writer",
-      items: [
-        "fiction (literary, genre)",
-        "creative non-fiction",
-        "theatre playwright/director",
-      ],
-    },
-    engineer: {
-      title: "backend engineer",
-      items: [
-        "Y Combinator startup in the restaurant industry",
-        "independent clients from Europe and Asia",
-      ],
-    },
-  },
-  interests: {
-    title: "interested in",
-    items: [
-      "news media",
-      "music",
-      "the esports industry (incl. Dota 2)",
-      "fashion",
-      "art and culture archival",
-    ],
-  },
-};
+import {
+  content,
+  FOOTER_TEXT_1,
+  FOOTER_TEXT_2,
+  FOOTER_TEXT_3,
+  SPOTIFY_EMBED_URL,
+} from "../utils/constants";
 ---
 
 <Layout>
   <main class="text-primary can-bg-change">
     <!-- small screen -->
     <div class="md:hidden flex flex-col gap-8 p-4">
-      <div class="flex justify-center gap-12 font-special-gothic text-sm">
+      <div
+        class="flex justify-center gap-12 font-national-park font-bold text-sm"
+      >
         <a
           href={content.links.samples.url}
           target="_blank"
@@ -116,16 +52,16 @@ const content = {
 
       <div>
         <p class="font-national-park font-semibold mb-1 text-center text-sm">
-          {content.current.title}
+          {content.currentWorks.title}
         </p>
         <ul class="px-3 list-none text-xs text-center">
-          {content.current.items.map((item) => <li>{item}</li>)}
+          {content.currentWorks.items.map((item) => <li>{item}</li>)}
         </ul>
       </div>
 
-      <div class="flex flex-col items-center gap-1 font-special-gothic text-sm">
+      <div class="flex flex-col items-center gap-1 font-national-park text-sm">
         {
-          Object.entries(content.contact).map(([key, info]) => (
+          Object.entries(content.contactItems).map(([key, info]) => (
             <a
               href={info.url}
               target="_blank"
@@ -160,10 +96,10 @@ const content = {
 
       <div>
         <p class="font-national-park font-semibold mb-1 text-sm">
-          {content.interests.title}
+          {content.interestItems.title}
         </p>
         <ul class="px-3 list-disc text-xs">
-          {content.interests.items.map((item) => <li>{item}</li>)}
+          {content.interestItems.items.map((item) => <li>{item}</li>)}
         </ul>
       </div>
 
@@ -176,8 +112,17 @@ const content = {
           allowfullscreen=""
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
+          title="Spotify Music Player"
         >
         </iframe>
+      </div>
+
+      <div
+        class="mb-2 flex flex-col items-center justify-center font-coral-pixels text-sm"
+      >
+        <a href="/about-this-website">{FOOTER_TEXT_2}</a>
+        {FOOTER_TEXT_1}
+        <p class="font-barcode">{FOOTER_TEXT_3}</p>
       </div>
     </div>
 
@@ -192,7 +137,7 @@ const content = {
           rel="noopener noreferrer"
           class="link"
         >
-          <span class="font-special-gothic flex items-start gap-1">
+          <span class="font-national-park font-bold flex items-start gap-1">
             <i class={content.links.samples.iconClass}></i>
             {content.links.samples.text}
           </span>
@@ -206,7 +151,7 @@ const content = {
           rel="noopener noreferrer"
           class="link"
         >
-          <span class="font-special-gothic flex items-start gap-1">
+          <span class="font-national-park font-bold flex items-start gap-1">
             <i class={content.links.resume.iconClass}></i>
             {content.links.resume.text}
           </span>
@@ -215,20 +160,22 @@ const content = {
       <div class="order-4 flex items-center justify-end">
         <div>
           <p class="font-national-park font-semibold mb-2 text-center">
-            {content.current.title}
+            {content.currentWorks.title}
           </p>
           <ul class="text-left list-disc">
-            {content.current.items.map((item) => <li>{item}</li>)}
+            {content.currentWorks.items.map((item) => <li>{item}</li>)}
           </ul>
         </div>
       </div>
-      <div class="order-5 flex flex-col items-center justify-center">
+      <div
+        class="order-5 flex flex-col items-center justify-center diagonal-squares"
+      >
         <h1
           class="font-special-gothic-expanded text-5xl mb-2 text-left name-hover-trigger"
         >
           {content.name1}<br />{content.name2}
         </h1>
-        <p class="text-sm italic font-national-park">{content.subtitle}</p>
+        <p class="font-national-park text-xs">{content.subtitle}</p>
       </div>
       <div class="order-6 flex flex-col items-start justify-center gap-6">
         {
@@ -244,17 +191,26 @@ const content = {
           ))
         }
       </div>
-      <div class="order-7 flex items-center justify-center"></div>
+      <div
+        class="order-7 flex flex-col items-start justify-end pl-6 font-coral-pixels text-sm"
+      >
+        <a
+          class="hover:text-current/70 transition-all duration-50"
+          href="/about-this-website">{FOOTER_TEXT_2}</a
+        >
+        {FOOTER_TEXT_1}
+        <p class="font-barcode">{FOOTER_TEXT_3}</p>
+      </div>
       <div class="order-8 flex items-center justify-center flex-col gap-1">
         {
-          Object.entries(content.contact).map(([key, info]) => (
+          Object.entries(content.contactItems).map(([key, info]) => (
             <a
               href={info.url}
               target="_blank"
               rel="noopener noreferrer"
               class="link"
             >
-              <span class="font-special-gothic flex items-center gap-1">
+              <span class="font-national-park flex items-center gap-1">
                 <i class={info.iconClass} />
                 {info.text}
               </span>
@@ -265,10 +221,10 @@ const content = {
       <div class="order-9 flex items-center justify-start">
         <div>
           <p class="font-national-park font-semibold mb-2">
-            {content.interests.title}
+            {content.interestItems.title}
           </p>
           <ul class="list-disc text-sm">
-            {content.interests.items.map((item) => <li>{item}</li>)}
+            {content.interestItems.items.map((item) => <li>{item}</li>)}
           </ul>
         </div>
       </div>
@@ -282,6 +238,7 @@ const content = {
           allowfullscreen=""
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
+          title="Spotify Music Player"
         >
         </iframe>
       </div>
