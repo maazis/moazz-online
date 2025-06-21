@@ -15,8 +15,10 @@ export const content: Content = {
   currentWorks: {
     title: "At The Moment",
     items: [
+      "journalist at Impakter",
       "postgraduate in Philosophy and Computer Science",
-      "historical fiction on the past and future of South Asia",
+      "literary project on recent South Asian history",
+      "(archival research x narrative fiction)",
     ],
   },
   links: {
@@ -52,8 +54,9 @@ export const content: Content = {
     writer: {
       title: "writer",
       items: [
-        "fiction (literary, genre)",
+        "journalism",
         "creative non-fiction",
+        "fiction (literary, genre)",
         "theatre playwright/director",
       ],
     },
@@ -71,8 +74,8 @@ export const content: Content = {
       "narrative design",
       "news media & editorial",
       "the esports industry (incl. Dota 2)",
-      "fashion",
-      "arts and culture (incl. Music)",
+      "culture (incl. Music, fashion)",
+      "literature",
     ],
   },
 };
